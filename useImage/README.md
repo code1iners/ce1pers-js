@@ -4,8 +4,6 @@ React hook to getting image file in device.
 
 ### Installation
 
----
-
 ##### npm
 
 `npm i @ce1pers/use-image`
@@ -15,8 +13,6 @@ React hook to getting image file in device.
 `yarn add @ce1pers/use-image`
 
 ### Usage
-
----
 
 ```javascript
 // Import hook.
