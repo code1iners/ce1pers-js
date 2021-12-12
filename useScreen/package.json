@@ -1,0 +1,25 @@
+{
+  "name": "@ce1pers/use-screen",
+  "version": "1.0.1",
+  "description": "React native hook to control device orientation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "hooks",
+    "screen",
+    "orientation"
+  ],
+  "author": "codeliner <codeliner96@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@types/react-native": "^0.66.8",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-native": "^0.66.4",
+    "typescript": "^4.5.3",
+    "expo-screen-orientation": "^4.0.3"
+  }
+}
