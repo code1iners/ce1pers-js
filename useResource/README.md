@@ -17,6 +17,7 @@ React native hook to initialize resources.
 ```javascript
 // Import hook.
 import { loadFonts,loadImages } from "@ce1pers/use-resource";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function App() {
 
