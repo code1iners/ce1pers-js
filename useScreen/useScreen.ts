@@ -2,8 +2,8 @@ import * as ScreenOrientation from "expo-screen-orientation";
 
 export const PORTRAIT_UP: string = "PORTRAIT_UP";
 export const PORTRAIT_DOWN: string = "PORTRAIT_DOWN";
-export const LANDSCAPE_LEFT: string = "PORTRAIT_UP";
-export const LANDSCAPE_RIGHT: string = "PORTRAIT_UP";
+export const LANDSCAPE_LEFT: string = "LANDSCAPE_LEFT";
+export const LANDSCAPE_RIGHT: string = "LANDSCAPE_RIGHT";
 
 /**
  * ### Get current screen orientation.

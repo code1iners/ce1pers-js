@@ -1,4 +1,4 @@
-# @celpers/use-screen
+# @ce1pers/use-screen
 
 React native hook to control device orientation.
 

@@ -1,6 +1,6 @@
 {
   "name": "@ce1pers/use-image",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React hook to getting image file in device.",
   "main": "index.js",
   "repository": {

@@ -1,4 +1,4 @@
-# @celpers/use-image
+# @ce1pers/use-image
 
 React hook to getting image file in device.
 

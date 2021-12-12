@@ -1,6 +1,6 @@
 {
   "name": "@ce1pers/use-screen",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "React native hook to control device orientation.",
   "main": "index.js",
   "scripts": {
