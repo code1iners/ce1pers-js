@@ -1,0 +1,22 @@
+{
+  "name": "@ce1pers/use-password",
+  "version": "1.0.3",
+  "description": "Password hook build by Javascript.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code1iners/ce1pers-js.git"
+  },
+  "keywords": [
+    "Javascript",
+    "Hook",
+    "Password",
+    "Helper"
+  ],
+  "author": "Codeliner <codeliner96@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/code1iners/ce1pers-js/issues"
+  },
+  "homepage": "https://github.com/code1iners/ce1pers-js#readme"
+}
