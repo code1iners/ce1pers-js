@@ -1,0 +1,33 @@
+{
+  "name": "@ce1pers/use-page",
+  "version": "1.0.0",
+  "description": "Simple Pagination Hook.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node ./build/src/test/usePageTest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code1iners/ce1pers-js.git"
+  },
+  "keywords": [
+    "Hook",
+    "Javascript",
+    "Js",
+    "TypeScript",
+    "Ts",
+    "Pagination"
+  ],
+  "author": "Codeliner <codeliner96@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/code1iners/ce1pers-js/issues"
+  },
+  "homepage": "https://github.com/code1iners/ce1pers-js#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  },
+  "type": "commonjs"
+}
