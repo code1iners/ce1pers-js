@@ -4,7 +4,7 @@ import {
   IGenerateResult,
 } from "./types/usePage.type";
 
-export const usePage = ({ skip = 0, take, data }: IGenerateProps) => {
+export const usePage = ({ take, data }: IGenerateProps) => {
   let pages: IGeneratePageData[] = [];
   let currentIndex: number = 0;
 

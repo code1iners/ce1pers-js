@@ -1,5 +1,4 @@
 export interface IGenerateProps {
-  skip: number;
   take: number;
   data: any[];
 }
