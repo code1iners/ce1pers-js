@@ -2,7 +2,6 @@ import { members, numbers } from "../data/numbers";
 import { usePage } from "../usePage";
 
 const { generate } = usePage({
-  skip: 3,
   take: 4,
   data: members,
 });

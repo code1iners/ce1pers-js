@@ -1,8 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.usePage = void 0;
+/**
+ * ### Pagination hook.
+ */
 var usePage = function (_a) {
-    var _b = _a.skip, skip = _b === void 0 ? 0 : _b, take = _a.take, data = _a.data;
+    var take = _a.take, data = _a.data;
     var pages = [];
     var currentIndex = 0;
     // Getters start.
