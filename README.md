@@ -1,6 +1,6 @@
 # Ce1pers (for Javascript)
 
-Collection of React hook for React (with React Native) framework app development.
+Collection of hook for Javascript side application or framework.
 
 ## Each hooks.
 
