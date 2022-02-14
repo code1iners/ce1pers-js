@@ -21,7 +21,7 @@ import { usePage, testData } from "@ce1pers/use-page";
 // Initialize pagination.
 const { generate } = usePage({
   take: 4,
-  data,
+  data: testData.members,
 });
 
 // Generate.
