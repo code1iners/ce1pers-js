@@ -1,1 +1,1 @@
-export { usePage } from "./src/usePage";
+export { usePage } from "./build/src/usePage";
