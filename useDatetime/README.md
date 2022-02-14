@@ -1,4 +1,4 @@
-# @ce1pers/use-page
+# @ce1pers/use-datetime
 
 Javascript hook to datetime.
 
