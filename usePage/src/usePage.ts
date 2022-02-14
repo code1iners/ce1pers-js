@@ -4,6 +4,9 @@ import {
   IGenerateResult,
 } from "./types/usePage.type";
 
+/**
+ * ### Pagination hook.
+ */
 export const usePage = ({ take, data }: IGenerateProps) => {
   let pages: IGeneratePageData[] = [];
   let currentIndex: number = 0;

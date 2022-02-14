@@ -1,6 +1,6 @@
 {
   "name": "@ce1pers/use-page",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple Pagination Hook.",
   "main": "index.js",
   "scripts": {
@@ -28,6 +28,5 @@
   "dependencies": {},
   "devDependencies": {
     "typescript": "^4.5.5"
-  },
-  "type": "commonjs"
+  }
 }
