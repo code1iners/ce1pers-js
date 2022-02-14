@@ -1,6 +1,6 @@
 # @ce1pers/use-password
 
-Javascript hook to password management.
+Many useful hook related to password.
 
 ## Installation
 
@@ -14,12 +14,12 @@ Javascript hook to password management.
 
 ## Usage
 
-``` javascript
+```javascript
 // Import library.
-import { useGenerator } from "@ce1pers/use-password";
+import { usePassword } from "@ce1pers/use-password";
 
 // Getting randomly password generate function.
-const { generate } = useGenerator();
+const { generate } = usePassword();
 
 // Declare conditions.
 const passwordLength = 20;
@@ -29,13 +29,13 @@ const useLowercaseLetters = false;
 const useUppercaseLetters = true;
 
 // Generate randomly password.
-const { ok, data, error } = generate(
-    passwordLength,
-    useNumbers,
-    useSymbols,
-    useLowercaseLetters,
-    useUppercaseLetters,
-);
+const { ok, data, error } = generate({
+  passwordLength,
+  useNumbers,
+  useSymbols,
+  useLowercaseLetters,
+  useUppercaseLetters,
+});
 
 if (ok) {
   console.log(data); // Randomly password data.
