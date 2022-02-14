@@ -1,9 +1,9 @@
-import { members, numbers } from "../data/numbers";
+import { testMembers, testNumbers } from "../data/testData";
 import { usePage } from "../usePage";
 
 const { generate } = usePage({
   take: 4,
-  data: members,
+  data: testMembers,
 });
 
 const result = generate();
