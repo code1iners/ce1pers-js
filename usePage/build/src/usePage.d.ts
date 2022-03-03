@@ -1,27 +1,7 @@
-export interface IGenerateProps {
-    take: number;
-    data: any[];
-}
-export interface IGeneratePageData {
-    index: number;
-    page: number;
-    data: any[];
-}
-interface IGenerateResult {
-    count: number;
-    pages: IGeneratePageData[];
-    currentPage: IGeneratePageData;
-    firstPage: IGeneratePageData | null;
-    lastPage: IGeneratePageData | null;
-    hasNext: boolean;
-    hasPrevious: boolean;
-    next: () => IGenerateResult;
-    previous: () => IGenerateResult;
-}
+import { IGenerateProps, IGenerateResult } from "./types/usePage.d";
 /**
  * ### Pagination hook.
  */
-export declare const usePage: ({ take, data }: IGenerateProps) => {
+export declare const generator: ({ take, data }: IGenerateProps) => {
     generate: () => IGenerateResult;
 };
-export {};

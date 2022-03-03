@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.usePage = void 0;
+exports.generator = void 0;
 /**
  * ### Pagination hook.
  */
-var usePage = function (_a) {
-    var take = _a.take, data = _a.data;
+var generator = function (_a) {
+    var _b = _a.take, take = _b === void 0 ? 5 : _b, data = _a.data;
     var pages = [];
     var currentIndex = 0;
     // Getters start.
@@ -155,4 +155,4 @@ var usePage = function (_a) {
         generate: generate,
     };
 };
-exports.usePage = usePage;
+exports.generator = generator;

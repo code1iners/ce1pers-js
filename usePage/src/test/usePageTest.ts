@@ -1,7 +1,7 @@
 import { testMembers, testNumbers } from "../data/testData";
-import { usePage } from "../usePage";
+import { generator } from "../usePage";
 
-const { generate } = usePage({
+const { generate } = generator({
   take: 4,
   data: testMembers,
 });

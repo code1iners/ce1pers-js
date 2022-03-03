@@ -1,2 +1,2 @@
-export { usePage } from "./src/usePage";
+export { generator } from "./src/usePage";
 export { testData } from "./src/data/testData";
