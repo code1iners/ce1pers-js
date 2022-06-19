@@ -1,6 +1,6 @@
 {
   "name": "@ce1pers/use-class",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Simple html element class utility hooks.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
