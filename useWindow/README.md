@@ -6,11 +6,11 @@ Simple web application window screen hook.
 
 ##### npm
 
-`npm i @ce1pers/use-password`
+`npm i @ce1pers/use-window`
 
 ##### yarn
 
-`yarn add @ce1pers/use-password`
+`yarn add @ce1pers/use-window`
 
 ## Usage
 
