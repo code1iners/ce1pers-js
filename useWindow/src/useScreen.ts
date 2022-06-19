@@ -11,27 +11,49 @@ interface WindowSize {
 export const useScreen = () => {
   const [windowSize, setWindowSize] = useState<WindowSize>();
 
-  const onResize = () =>
-    setWindowSize({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-
   useEffect(() => {
     if (window) {
       setWindowSize({
         width: window.innerWidth,
         height: window.innerHeight,
       });
-
-      window.addEventListener("resize", onResize);
     }
+
     return () => {
-      window.removeEventListener("resize", onResize);
+      unsubscribe();
     };
   }, []);
 
+  /**
+   * On resize event handler.
+   */
+  const onResizeHandler = () =>
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+
+  /**
+   * Subscribe to window resize event listener.
+   */
+  const subscribe = () => {
+    if (window) {
+      window.addEventListener("resize", onResizeHandler);
+    }
+  };
+
+  /**
+   * Unsubscribe to window resize event listener.
+   */
+  const unsubscribe = () => {
+    if (window) {
+      window.removeEventListener("resize", onResizeHandler);
+    }
+  };
+
   return {
     windowSize,
+    subscribe,
+    unsubscribe,
   };
 };
