@@ -1,6 +1,6 @@
 # Ce1pers
 
-Collection of hook for Javascript side application or framework.
+Collection of react hook for Javascript side application or framework.
 
 ## Each hooks.
 
