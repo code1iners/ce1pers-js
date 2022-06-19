@@ -2,6 +2,18 @@
 
 Simple web application window screen hook.
 
+## Installation
+
+##### npm
+
+`npm i @ce1pers/use-password`
+
+##### yarn
+
+`yarn add @ce1pers/use-password`
+
+## Usage
+
 ```javascript
 ...
 
