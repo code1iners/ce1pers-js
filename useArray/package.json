@@ -1,5 +1,5 @@
 {
-  "name": "@celpers/use-array",
+  "name": "@ce1pers/use-array",
   "version": "1.0.0",
   "description": "Collection of utility functions for Array.",
   "main": "./dist/index.js",
