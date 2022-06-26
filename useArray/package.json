@@ -1,12 +1,13 @@
 {
   "name": "@ce1pers/use-array",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Collection of utility functions for Array.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "nodemon --exec ts-node ./test/*",
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "publish": "npm run build && npm publish"
   },
   "repository": {
     "type": "git",
