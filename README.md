@@ -6,6 +6,7 @@ Collection of react hook for Javascript side application or framework.
 
 |Hook|Description|Document|NPM|Framework|Language|
 | - | - | - | - | - | - |
+|useArray|Collection of array helpers|[useArray](https://github.com/code1iners/ce1pers/tree/production/useArray)|[@ce1pers/use-array](https://www.npmjs.com/package/@ce1pers/use-array)| * | Typescript |
 |useClass|Useful class helpers|[useClass](https://github.com/code1iners/ce1pers/tree/production/useClass)|[@ce1pers/use-class](https://www.npmjs.com/package/@ce1pers/use-class)| React | Typescript |
 |useWindow|Useful window helpers|[useWindow](https://github.com/code1iners/ce1pers/tree/production/useWindow)|[@ce1pers/use-window](https://www.npmjs.com/package/@ce1pers/use-window)| React | Typescript |
 |usePassword|Useful Password helpers|[usePassword](https://github.com/code1iners/ce1pers/tree/production/usePassword)|[@ce1pers/use-password](https://www.npmjs.com/package/@ce1pers/use-password)|*|Javascript & Typescript|
