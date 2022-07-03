@@ -92,7 +92,7 @@ export const paginator = <T>({ array, take }: HelperPaginatorProps<T>) => {
   /**
    * Get page list.
    */
-  const getPageList = () => [...Array(__maxPage__).keys()];
+  const getPageList = () => [...Array(__maxPage__ + 1).keys()];
 
   initialize();
 
