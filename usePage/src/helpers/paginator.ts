@@ -23,8 +23,6 @@ export const paginator = <T>({ array, take }: HelperPaginatorProps<T>) => {
     __maxPage__ = Math.floor(array.length / take);
   };
 
-  const getCursor = () => Math.floor(__cursor__);
-
   /**
    * Getting values of current page.
    */
@@ -91,6 +89,11 @@ export const paginator = <T>({ array, take }: HelperPaginatorProps<T>) => {
    */
   const hasPrevious = () => __cursor__ - take > 0;
 
+  /**
+   * Get page list.
+   */
+  const getPageList = () => [...Array(__maxPage__).keys()];
+
   initialize();
 
   return {
@@ -103,6 +106,6 @@ export const paginator = <T>({ array, take }: HelperPaginatorProps<T>) => {
     goTo,
     goFirst,
     goLast,
-    getCursor,
+    getPageList,
   };
 };
