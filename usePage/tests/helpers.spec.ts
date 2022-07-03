@@ -1,7 +1,6 @@
-import { helpers } from "../helpers";
-import { users } from "../../data/data";
-
-const { paginator } = helpers;
+import { users } from "../src/data/data";
+// import { paginator } from "../src/helpers/paginator";
+import { paginator } from "../src/helpers";
 
 const { getCurrentPage, getValues, next, previous, goTo, goFirst, goLast } =
   paginator({

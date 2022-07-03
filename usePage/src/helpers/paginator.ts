@@ -8,7 +8,7 @@ export type ArrayValue<T> = T[];
 /**
  * Paginator helpers.
  */
-const paginator = <T>({ array, take }: HelperPaginatorProps<T>) => {
+export const paginator = <T>({ array, take }: HelperPaginatorProps<T>) => {
   let __currentPage__: number = 0;
   let __arrayValues__: ArrayValue<T> = [];
   let __cursor__: number = 0;
@@ -101,5 +101,3 @@ const paginator = <T>({ array, take }: HelperPaginatorProps<T>) => {
     goLast,
   };
 };
-
-export default paginator;
