@@ -16,17 +16,20 @@ Javascript hook to pagination.
 
 ```javascript
 // Import library.
-import { usePage, testData } from "@ce1pers/use-page";
+import { paginator } from "@ce1pers/use-page";
 
 // Initialize pagination.
-const { generate } = usePage({
-  take: 4,
-  data: testData.members,
+const { getValues, next, previous } = paginator({
+  array: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  take: 3,
 });
 
-// Generate.
-const result = generate();
+// Current values.
+getValues(); // [ 1, 2, 3 ]
 
-// Check paginated data.
-console.log(result);
+// Next page values.
+next(); // [ 4, 5, 6 ]
+
+// Previous page values.
+previous(); // [ 1, 2, 3 ]
 ```
