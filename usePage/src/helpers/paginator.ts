@@ -1,6 +1,7 @@
 export interface HelperPaginatorProps<T> {
   array: T[];
   take: number;
+  offset?: number;
 }
 
 export type ArrayValue<T> = T[];
@@ -8,11 +9,17 @@ export type ArrayValue<T> = T[];
 /**
  * Paginator helpers.
  */
-export const paginator = <T>({ array, take }: HelperPaginatorProps<T>) => {
+export const paginator = <T>({
+  array,
+  take,
+  offset = 10,
+}: HelperPaginatorProps<T>) => {
   let __currentPage__: number = 0;
   let __arrayValues__: ArrayValue<T> = [];
   let __cursor__: number = 0;
   let __maxPage__: number = 0;
+  let __pageList__: number[] = [];
+  let __dividedPageList__: number[][] = [];
 
   /**
    * Paginator initialize.
@@ -21,6 +28,8 @@ export const paginator = <T>({ array, take }: HelperPaginatorProps<T>) => {
     __arrayValues__ = [...array.slice(0, take)];
     __cursor__ = take;
     __maxPage__ = Math.ceil(array.length / take);
+    __pageList__ = [...Array(__maxPage__).keys()];
+    __dividedPageList__ = __makePageListWithOffset__(offset);
   };
 
   /**
@@ -90,9 +99,37 @@ export const paginator = <T>({ array, take }: HelperPaginatorProps<T>) => {
   const hasPrevious = () => __cursor__ - take > 0;
 
   /**
-   * Get page list.
+   * Get page all list.
    */
-  const getPageList = () => [...Array(__maxPage__).keys()];
+  const getPageList = () => [...__pageList__];
+
+  /**
+   * Get divided page list with offset.
+   */
+  const getDividedPageList = (offset?: number) =>
+    offset ? __makePageListWithOffset__(offset) : __dividedPageList__;
+
+  /**
+   * Make page list by offset.
+   */
+  const __makePageListWithOffset__ = (offset: number) => {
+    const list = getPageList();
+    __dividedPageList__ = [];
+    [...Array(Math.ceil(list.length / offset)).keys()].forEach(() => {
+      __dividedPageList__.push(list.splice(0, offset));
+    });
+    return __dividedPageList__;
+  };
+
+  /**
+   * Get current page list range.
+   */
+  const getCurrentPageListRange = () => {
+    for (const pageList of __dividedPageList__) {
+      if (pageList.includes(__currentPage__)) return pageList;
+    }
+    return [];
+  };
 
   initialize();
 
@@ -107,5 +144,7 @@ export const paginator = <T>({ array, take }: HelperPaginatorProps<T>) => {
     goFirst,
     goLast,
     getPageList,
+    getDividedPageList,
+    getCurrentPageListRange,
   };
 };
