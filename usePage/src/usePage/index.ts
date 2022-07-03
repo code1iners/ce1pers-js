@@ -1,8 +1,4 @@
-import {
-  IGenerateProps,
-  IGeneratePageData,
-  IGenerateResult,
-} from "./types/usePage.d";
+import { IGenerateProps, IGeneratePageData, IGenerateResult } from "./usePage";
 
 /**
  * ### Pagination hook.
@@ -26,12 +22,12 @@ export const generator = ({ take = 5, data }: IGenerateProps) => {
   /**
    * ### Getting current page as object.
    */
-  const getCurrentPage = (): IGeneratePageData => getCurrentpageData();
+  const getCurrentPage = (): IGeneratePageData => getCurrentPageData();
 
   /**
    * ### Getting current page data.
    */
-  const getCurrentpageData = (): IGeneratePageData =>
+  const getCurrentPageData = (): IGeneratePageData =>
     pages[getCurrentPageAsIndex()];
 
   /**

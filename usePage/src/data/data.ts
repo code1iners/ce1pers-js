@@ -139,3 +139,8 @@ export const testData = {
   numbers: testNumbers,
   members: testMembers,
 };
+
+export const users = [...Array(10).keys()].map((i) => ({
+  name: `user-${i}`,
+  age: `${i}`,
+}));
