@@ -16,7 +16,7 @@ Javascript hook to datetime.
 
 ```javascript
 // Import Library.
-import { useDatetime } from "./useDatetime";
+import { useDatetime } from "@ce1pers/use-datetime";
 
 // Declared hook.
 const { getPassedTime, convertDateToEight, convertEightToDate } = useDatetime();
