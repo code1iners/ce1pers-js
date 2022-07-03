@@ -1,6 +1,13 @@
-import { ArrayValue } from "./paginators";
-import { HelperPaginatorProps } from "./paginators";
+export interface HelperPaginatorProps<T> {
+  array: T[];
+  take: number;
+}
 
+export type ArrayValue<T> = T[];
+
+/**
+ * Paginator helpers.
+ */
 const paginator = <T>({ array, take }: HelperPaginatorProps<T>) => {
   let __currentPage__: number = 0;
   let __arrayValues__: ArrayValue<T> = [];
