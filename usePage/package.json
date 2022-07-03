@@ -1,12 +1,11 @@
 {
   "name": "@ce1pers/use-page",
-  "version": "1.4.11",
+  "version": "1.5.0",
   "description": "Simple Pagination Hook.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev:usePage": "nodemon --exec ts-node ./src/usePage/*.spec.ts --ext ts,js",
-    "dev:helpers": "nodemon --exec ts-node ./src/helpers/*.spec.ts --ext ts,js",
+    "dev": "nodemon --exec ts-node ./tests/*.spec.ts --ext ts,js",
     "build": "rm -rf dist && tsc",
     "publish": "npm run build && npm publish"
   },

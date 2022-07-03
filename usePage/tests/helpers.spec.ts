@@ -1,22 +1,27 @@
-import { users } from "../src/data/data";
+import { users, testNumbers } from "../src/data/data";
 // import { paginator } from "../src/helpers/paginator";
 import { paginator } from "../src/helpers";
 
-const { getCurrentPage, getValues, next, previous, goTo, goFirst, goLast } =
-  paginator({
-    array: users,
-    take: 2,
-  });
+const { next, previous, goTo, goFirst, goLast, getCursor } = paginator({
+  array: users,
+  take: 3,
+});
 
 console.log(users);
-console.log("g", goTo(0));
-console.log("g", goTo(1));
-console.log("g", goTo(2));
-console.log("g", goTo(3));
-console.log("g", goTo(4));
-console.log("g", goTo(5));
-console.log("g", goTo(0));
-console.log("n", next());
-console.log("n", previous());
-console.log("gl", goLast());
-console.log("gf", goFirst());
+// console.log("g", goTo(0), getCursor());
+// console.log("g", goTo(1), getCursor());
+// console.log("g", goTo(2), getCursor());
+// console.log("g", goTo(3), getCursor());
+// console.log("g", goTo(4), getCursor());
+// console.log("g", goTo(5), getCursor());
+// console.log("g", goTo(0), getCursor());
+console.log("n", next(), getCursor());
+console.log("n", next(), getCursor());
+console.log("n", next(), getCursor());
+console.log("n", next(), getCursor());
+console.log("n", next(), getCursor());
+console.log("n", next(), getCursor());
+console.log("gl", goLast(), getCursor());
+console.log("p", previous(), getCursor());
+console.log("n", next(), getCursor());
+console.log("gf", goFirst(), getCursor());

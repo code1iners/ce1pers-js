@@ -140,7 +140,7 @@ export const testData = {
   members: testMembers,
 };
 
-export const users = [...Array(10).keys()].map((i) => ({
+export const users = [...Array(17).keys()].map((i) => ({
   name: `user-${i}`,
   age: `${i}`,
 }));
