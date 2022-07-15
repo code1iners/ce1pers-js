@@ -1,1 +1,11 @@
-export * as helpers from "./src/helpers";
+export {
+  binaryToDecimal,
+  binaryToHex,
+  binaryToOctal,
+  decimalToBinary,
+  decimalToHex,
+  decimalToOctal,
+  hexToBinary,
+  hexToDecimal,
+  hexToOctal,
+} from "./src/helpers/converter";

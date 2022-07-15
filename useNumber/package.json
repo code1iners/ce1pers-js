@@ -1,6 +1,6 @@
 {
   "name": "@ce1pers/use-number",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Collection of useful numeric helper functions.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
