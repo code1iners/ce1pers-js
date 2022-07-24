@@ -6,6 +6,7 @@ Collection of react hook for Javascript side application or framework.
 
 |Hook|Description|Document|NPM|Framework|Language|
 | - | - | - | - | - | - |
+|useAnimation|Collection of animation helpers|[useAnimation](https://github.com/code1iners/ce1pers/tree/production/useAnimation)|[@ce1pers/use-animation](https://www.npmjs.com/package/@ce1pers/use-animation)| React, Vue? | Typescript |
 |useNumber|Collection of numeric helpers|[useNumber](https://github.com/code1iners/ce1pers/tree/production/useNumber)|[@ce1pers/use-number](https://www.npmjs.com/package/@ce1pers/use-number)| * | Typescript |
 |useSort|Collection of sort helpers|[useSort](https://github.com/code1iners/ce1pers/tree/production/useSort)|[@ce1pers/use-sort](https://www.npmjs.com/package/@ce1pers/use-sort)| * | Typescript |
 |useArray|Collection of array helpers|[useArray](https://github.com/code1iners/ce1pers/tree/production/useArray)|[@ce1pers/use-array](https://www.npmjs.com/package/@ce1pers/use-array)| * | Typescript |
