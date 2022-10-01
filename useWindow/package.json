@@ -1,6 +1,6 @@
 {
   "name": "@ce1pers/use-window",
-  "version": "1.2.1",
+  "version": "1.3.2",
   "description": "Simple web application window screen hook.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -33,6 +33,6 @@
   "devDependencies": {
     "nodemon": "^2.0.16",
     "ts-node": "^10.8.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.4"
   }
 }
