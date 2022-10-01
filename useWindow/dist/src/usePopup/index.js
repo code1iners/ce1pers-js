@@ -1,14 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.usePopup = void 0;
-const usePopup = ({ onMessageCallback }) => {
+const usePopup = ({ onMessageCallback, onWindowUnloadCallback, }) => {
     // Declared variables.
     let __newWindow__ = null;
     let __targetOrigin__;
     let __sourceOrigin__;
     // Initialize listeners.
-    if (window && onMessageCallback) {
-        window.addEventListener("message", onMessageCallback, false);
+    if (window) {
+        if (onMessageCallback) {
+            window.addEventListener("message", onMessageCallback, false);
+        }
+        window.addEventListener("unload", defaultWindowUnloadHandler, false);
+    }
+    function defaultWindowUnloadHandler() {
+        sendMessageToSourceOrigin({ data: "The windows closed.", type: "close" });
+        if (onWindowUnloadCallback)
+            onWindowUnloadCallback();
     }
     /**
      * Open new window popup.

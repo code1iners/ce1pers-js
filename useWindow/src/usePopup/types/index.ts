@@ -16,4 +16,5 @@ export interface SendMessage {
 
 export interface UsePopupProps {
   onMessageCallback?: (event: MessageEvent) => void;
+  onWindowUnloadCallback?: () => void;
 }

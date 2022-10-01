@@ -1,14 +1,27 @@
 import { OpenPopupProps, SendMessage, UsePopupProps } from "./types";
 
-export const usePopup = ({ onMessageCallback }: UsePopupProps) => {
+export const usePopup = ({
+  onMessageCallback,
+  onWindowUnloadCallback,
+}: UsePopupProps) => {
   // Declared variables.
   let __newWindow__: Window | null = null;
   let __targetOrigin__: string;
   let __sourceOrigin__: MessageEventSource;
 
   // Initialize listeners.
-  if (window && onMessageCallback) {
-    window.addEventListener("message", onMessageCallback, false);
+  if (window) {
+    if (onMessageCallback) {
+      window.addEventListener("message", onMessageCallback, false);
+    }
+
+    window.addEventListener("unload", defaultWindowUnloadHandler, false);
+  }
+
+  function defaultWindowUnloadHandler() {
+    sendMessageToSourceOrigin({ data: "The windows closed.", type: "close" });
+
+    if (onWindowUnloadCallback) onWindowUnloadCallback();
   }
 
   /**
