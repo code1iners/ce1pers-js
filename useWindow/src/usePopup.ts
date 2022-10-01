@@ -2,6 +2,10 @@ export interface OpenPopupProps {
   targetOrigin: string;
   callback?: () => void;
   windowTarget?: "_self" | "_blank" | "_parent" | "_top";
+  width?: number;
+  height?: number;
+  left?: number;
+  top?: number;
 }
 
 export interface SendMessage {
@@ -33,18 +37,24 @@ export const usePopup = ({ onMessageCallback }: UsePopupProps) => {
     targetOrigin,
     callback,
     windowTarget = "_self",
+    width = 500,
+    height = 500,
+    left,
+    top,
   }: OpenPopupProps) => {
     try {
-      const widthValue = 400;
-      const heightValue = widthValue;
-      const leftValue = window.screen.availWidth / 2 - widthValue / 2;
-      const topValue = window.screen.availHeight / 2 - heightValue / 2;
+      // Set width & height of the window.
+      const widthValue = width;
+      const heightValue = height ?? widthValue;
 
-      __targetOrigin__ = targetOrigin;
+      // Set position of the window.
+      let leftValue = left ?? window.screen.availWidth / 2 - widthValue / 2;
+      let topValue = top ?? window.screen.availHeight / 2 - heightValue / 2;
 
+      // Set target options.
+      setTargetOrigin(targetOrigin);
       // Defined window features.
       const windowFeatures = `popup,toolbar,scrollbars=yes,top=${topValue},left=${leftValue},width=${widthValue},height=${heightValue}`;
-
       // Open new window popup.
       __newWindow__ = window.open(targetOrigin, windowTarget, windowFeatures);
 
@@ -99,6 +109,12 @@ export const usePopup = ({ onMessageCallback }: UsePopupProps) => {
 
   const getSourceOrigin = () => __sourceOrigin__;
 
+  const setTargetOrigin = (targetOrigin: string) => {
+    __targetOrigin__ = targetOrigin;
+  };
+
+  const getTargetOrigin = () => __targetOrigin__;
+
   const getNewWindow = () => __newWindow__;
 
   return {
@@ -108,5 +124,7 @@ export const usePopup = ({ onMessageCallback }: UsePopupProps) => {
     getNewWindow,
     getSourceOrigin,
     setSourceOrigin,
+    setTargetOrigin,
+    getTargetOrigin,
   };
 };
