@@ -29,7 +29,7 @@ Collection of various useful animation helper functions.
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://cdn.statically.io/gh/code1iners/ce1pers-cdn/production/rotate-effect.css"
+      href="https://cdn.statically.io/gh/code1iners/ce1pers-content-provider-gulp/v0.0.0/dist/mouse-click-effects/index.min.css"
     />
     ...
   </head>
