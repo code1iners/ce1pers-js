@@ -14,9 +14,8 @@ Simple web application window screen hook.
 
 ## Usage
 
+### Use Screen
 ```javascript
-...
-
 // Import hook.
 import { useScreen } from "@ce1pers/use-window";
 
@@ -29,12 +28,13 @@ console.log(windowSize?.width, windowSize?.height);
 ...
 ```
 
-```javascript
-...
 
+### Use Popup
+```javascript
 // Import hook.
 import { usePopup } from "@ce1pers/use-window";
 
+// Declare use popup hook.
 const { open, sendMessageToTargetOrigin } = usePopup({
   onMessageCallback,
 });
@@ -44,6 +44,8 @@ open({
     targetOrigin: 'http://localhost:5555',
     windowTarget: '_blank',
     callback: openPopupCallback,
+    width: 400,
+    height: 400,
 })
 
 
@@ -54,6 +56,4 @@ function onMessageCallback() {
 function openPopupCallback() {
     // Write process what you want when opened a new window.
 }
-
-...
 ```

@@ -14,13 +14,16 @@ const usePopup = ({ onMessageCallback }) => {
      * Open new window popup.
      * @param {OpenPopupProps} props - Open new window popup props.
      */
-    const open = ({ targetOrigin, callback, windowTarget = "_self", }) => {
+    const open = ({ targetOrigin, callback, windowTarget = "_self", width = 500, height = 500, left, top, }) => {
         try {
-            const widthValue = 400;
-            const heightValue = widthValue;
-            const leftValue = window.screen.availWidth / 2 - widthValue / 2;
-            const topValue = window.screen.availHeight / 2 - heightValue / 2;
-            __targetOrigin__ = targetOrigin;
+            // Set width & height of the window.
+            const widthValue = width;
+            const heightValue = height !== null && height !== void 0 ? height : widthValue;
+            // Set position of the window.
+            let leftValue = left !== null && left !== void 0 ? left : window.screen.availWidth / 2 - widthValue / 2;
+            let topValue = top !== null && top !== void 0 ? top : window.screen.availHeight / 2 - heightValue / 2;
+            // Set target options.
+            setTargetOrigin(targetOrigin);
             // Defined window features.
             const windowFeatures = `popup,toolbar,scrollbars=yes,top=${topValue},left=${leftValue},width=${widthValue},height=${heightValue}`;
             // Open new window popup.
@@ -70,6 +73,10 @@ const usePopup = ({ onMessageCallback }) => {
         __sourceOrigin__ = sourceOrigin;
     };
     const getSourceOrigin = () => __sourceOrigin__;
+    const setTargetOrigin = (targetOrigin) => {
+        __targetOrigin__ = targetOrigin;
+    };
+    const getTargetOrigin = () => __targetOrigin__;
     const getNewWindow = () => __newWindow__;
     return {
         sendMessageToTargetOrigin,
@@ -78,6 +85,8 @@ const usePopup = ({ onMessageCallback }) => {
         getNewWindow,
         getSourceOrigin,
         setSourceOrigin,
+        setTargetOrigin,
+        getTargetOrigin,
     };
 };
 exports.usePopup = usePopup;
