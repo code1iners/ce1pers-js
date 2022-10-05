@@ -24,3 +24,4 @@ Collection of react hook for Javascript side application or framework.
 |Name|Description|Document|NPM|Language|
 | - | - | - | - | - |
 |window-helpers|Useful Window Web APIs helpers|[window-helpers](https://github.com/code1iners/ce1pers/tree/production/window-helpers)|[@ce1pers/window-helpers](https://www.npmjs.com/package/@ce1pers/window-helpers)| Typescript |
+|logger-helpers|Useful Logger helpers|[logger-helpers](https://github.com/code1iners/ce1pers/tree/production/logger-helpers)|[@ce1pers/logger-helpers](https://www.npmjs.com/package/@ce1pers/logger-helpers)| Typescript |

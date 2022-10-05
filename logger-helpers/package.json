@@ -1,0 +1,24 @@
+{
+  "name": "@ce1pers/logger-helpers",
+  "version": "1.0.3",
+  "description": "Logger helpers with typescript.",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "publish": "npm run build && npm publish --access public"
+  },
+  "keywords": [
+    "console",
+    "log",
+    "logger",
+    "javascript",
+    "typescript",
+    "helpers",
+    "debug"
+  ],
+  "author": "__coma__ <codeliner96@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  }
+}
