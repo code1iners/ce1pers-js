@@ -6,11 +6,11 @@ Simple html element class utility hooks.
 
 ##### npm
 
-`npm i @ce1pers/use-password`
+`npm i @ce1pers/use-class`
 
 ##### yarn
 
-`yarn add @ce1pers/use-password`
+`yarn add @ce1pers/use-class`
 
 ## Usage
 
