@@ -1,6 +1,7 @@
-export { usePopup } from "./src/usePopup";
-export {
-  OpenPopupProps,
-  SendMessage,
-  UsePopupProps,
-} from "./src/usePopup/types";
+export { useWindow } from "./src/useWindow";
+export type {
+  OpenWindowInputs,
+  SendMessageInputs,
+  SendMessageToOriginInputs,
+  UsePopupInputs,
+} from "./src/useWindow/types";
