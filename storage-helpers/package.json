@@ -1,0 +1,35 @@
+{
+  "name": "@ce1pers/storage-helpers",
+  "version": "1.0.11",
+  "description": "Browser storage helpers powered by typescript.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "publish": "npm run build && npm publish --access public"
+  },
+  "keywords": [
+    "storage",
+    "localStorage",
+    "sessionStorage",
+    "indexedDB",
+    "TypeScript",
+    "helpers"
+  ],
+  "author": "__coma__ <codeliner96@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code1iners/ce1pers.git"
+  },
+  "bugs": {
+    "url": "https://github.com/code1iners/ce1pers/issues"
+  },
+  "homepage": "https://github.com/code1iners/ce1pers#readme",
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@ce1pers/logger-helpers": "^1.0.3"
+  }
+}
