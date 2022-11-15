@@ -1,12 +1,12 @@
 {
-  "name": "@ce1pers/use-datetime",
-  "version": "1.0.3",
-  "description": "Simple date time hook.",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "name": "@ce1pers/date-helpers",
+  "version": "1.0.5",
+  "description": "Simple date time helpers.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "nodemon --exec ts-node ./src/useDatetime.test.ts --ext ts,js",
-    "build": "rm -rf build && tsc"
+    "build": "rm -rf dist && tsc",
+    "deploy": "npm run build && npm publish --access public"
   },
   "keywords": [
     "Hook",
@@ -15,16 +15,14 @@
     "Typescript",
     "TS",
     "Date",
-    "Time",
-    "Datetime"
+    "Time"
   ],
-  "author": "Codeliner <codeliner96@gmail.com>",
+  "author": "__coma__ <codeliner96@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^17.0.17",
-    "nodemon": "^2.0.15",
     "ts-node": "^10.5.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.8.4"
   },
   "repository": {
     "type": "git",
