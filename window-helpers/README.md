@@ -22,23 +22,35 @@ Simple web application window screen hook.
 
 ```javascript
 // Import hook.
-import { usePopup } from "@ce1pers/window-helpers";
+import { useWindow } from "@ce1pers/window-helpers";
 
 // Declare use popup hook.
-const { open, sendMessageToTargetOrigin } = usePopup({
+
+type SendMessageType = "connection" | "submit";
+
+const { open, sendMessage } = useWindow({
   onMessageCallback,
 });
+const TARGET_URL = "http://localhost:5555";
 
 // Open new window as popup.
 open({
-  targetOrigin: "http://localhost:5555",
+  targetOrigin: TARGET_URL,
   windowTarget: "_blank",
   callback: openPopupCallback,
   width: 400,
   height: 400,
 });
 
-function onMessageCallback() {
+setInterval(() => {
+  sendMessage<SendMessageType>({
+    to: "targetOrigin",
+    type: "connection",
+  });
+}, 1000);
+
+function onMessageCallback(event: MessageEvent) {
+    if (event.origin !== TARGET_URL) return;
   // Write process what execute when received message from other window.
 }
 
