@@ -1,12 +1,12 @@
 {
   "name": "@ce1pers/storage-helpers",
-  "version": "1.0.12",
+  "version": "1.0.14",
   "description": "Browser storage helpers powered by typescript.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "publish": "npm run build && npm publish --access public"
+    "deploy": "npm run build && npm publish --access public"
   },
   "keywords": [
     "storage",
@@ -28,8 +28,5 @@
   "homepage": "https://github.com/code1iners/ce1pers#readme",
   "devDependencies": {
     "typescript": "^4.8.4"
-  },
-  "dependencies": {
-    "@ce1pers/logger-helpers": "^1.0.3"
   }
 }

@@ -1,101 +1,22 @@
-interface CoreOutput {
-  ok: boolean;
-  error?: string;
-}
-
-interface IndexedDbCommonCallbacks {
-  onSuccessCallback?: (database: IDBDatabase) => void;
-  onErrorCallback?: (event: Event) => void;
-}
-
-interface IndexedSpecialCallbacks extends IndexedDbCommonCallbacks {
-  onBlockedCallback?: () => void;
-  onUpgradeneededCallback?: (database: IDBDatabase) => void;
-}
-
-interface UseIndexedDatabaseInputs extends IndexedSpecialCallbacks {
-  databaseName: string;
-  databaseVersion?: number;
-}
-
-interface CreateRowProperties<T> extends IndexedDbCommonCallbacks {
-  storeName: string;
-  data: T;
-}
-
-interface CreateRowReturns extends CoreOutput {
-  data?: IDBDatabase;
-}
-
-interface RetrieveRowProperties extends IndexedDbCommonCallbacks {
-  storeName: string;
-  id?: number;
-  mode?: TransactionMode;
-}
-
-interface RetrieveRowReturns<T> extends CoreOutput {
-  data?: T;
-}
-
-interface UpdateRowProperties<T> extends IndexedDbCommonCallbacks {
-  storeName: string;
-  id: number;
-  data: T;
-}
-
-interface UpdateRowReturns extends CoreOutput {
-  data?: IDBDatabase;
-}
-
-interface DeleteRowProperties extends IndexedDbCommonCallbacks {
-  storeName: string;
-  id: number;
-}
-
-interface DeleteRowReturns extends CoreOutput {
-  data?: IDBDatabase;
-}
-
-interface ClearObjectStoreByNameProps {
-  storeName: string;
-  onSuccessCallback?: (event: Event) => void;
-  onErrorCallback?: (event: Event) => void;
-}
-
-interface CreateObjectStoreOption<T> {
-  keyPath?: keyof T;
-  autoIncrement?: boolean;
-}
-
-interface CreateObjectStoreProps<T> {
-  storeName: string;
-  options?: CreateObjectStoreOption<T>;
-  indexOptions?: ObjectStoreIndexOption<T>[];
-}
-
-interface DeleteObjectStoreByNameProps {
-  storeName: string;
-  onSuccessCallback?: () => void;
-  onFailureCallback?: () => void;
-}
-
-interface ObjectStoreIndexOption<T> {
-  name: keyof T;
-  keyPath: keyof T;
-  options?: IDBIndexParameters | undefined;
-}
-
-export type TransactionMode = "readonly" | "readwrite" | "versionchange";
-
-interface OpenDatabaseProperties {
-  name: string;
-  version: number;
-  onOpenDatabase?: () => void;
-}
-
-interface OpenDatabaseReturns extends CoreOutput {
-  data?: IDBOpenDBRequest;
-}
+import {
+  CoreOutput,
+  UseIndexedDatabaseInputs,
+  CreateRowProperties,
+  CreateRowReturns,
+  RetrieveRowProperties,
+  RetrieveRowReturns,
+  UpdateRowProperties,
+  UpdateRowReturns,
+  DeleteRowProperties,
+  DeleteRowReturns,
+  ClearObjectStoreByNameProps,
+  ClearObjectStoreReturns,
+  CreateObjectStoreProps,
+  DeleteObjectStoreByNameProps,
+  OpenDatabaseProperties,
+  OpenDatabaseReturns,
+  TransactionMode,
+} from "./types";
 
 export const useIndexedDatabase = ({
   databaseName,
@@ -116,56 +37,30 @@ export const useIndexedDatabase = ({
   const onBlocked = (event: Event) => {
     try {
       const { readyState } = event.target as IDBOpenDBRequest;
-      if (readyState !== "done") {
-        // debug({
-        //   title: "onBlocked",
-        //   description: REQUEST_DOES_NOT_READY,
-        //   debugLevel: "warning",
-        //   parameters: { readyState },
-        // });
-        return;
-      }
-
-      // debug({
-      //   title: "onBlocked",
-      //   debugLevel: "error",
-      //   description: "Please close all other tabs with this site open!",
-      // });
+      console.warn(
+        `Please close all other tabs with this site open! (${readyState})`
+      );
 
       // Execute callback.
       onBlockedCallback && onBlockedCallback();
     } catch (error) {
-      // debug({
-      //   title: "onBlocked",
-      //   flag: "catch",
-      //   debugLevel: "error",
-      //   description: (error as any).message,
-      //   parameters: { event },
-      // });
+      console.error((error as any).message);
     }
   };
 
   const onError = (event: Event) => {
     try {
       const { readyState, error } = event.target as IDBOpenDBRequest;
-
-      // debug({
-      //   title: "onError",
-      //   debugLevel: "warning",
-      //   flag: error?.name,
-      //   description: error?.message,
-      //   parameters: { readyState },
-      // });
+      console.warn(
+        `${
+          error?.message ? error.message : "An error has occurred."
+        } (${readyState})`
+      );
 
       // Execute callback.
       onErrorCallback && onErrorCallback(event);
     } catch (error) {
-      // debug({
-      //   title: "onError",
-      //   flag: "catch",
-      //   debugLevel: "error",
-      //   description: (error as any).message,
-      // });
+      console.error((error as any).message);
     }
   };
 
@@ -182,13 +77,7 @@ export const useIndexedDatabase = ({
       };
 
       if (readyState !== "done") {
-        return;
-        // return debug({
-        //   title: "onSuccess",
-        //   description: REQUEST_DOES_NOT_READY,
-        //   debugLevel: "warning",
-        //   parameters,
-        // });
+        return console.warn(`${REQUEST_DOES_NOT_READY} (${readyState})`);
       }
 
       // debug({ title: "onSuccess", parameters });
@@ -196,12 +85,7 @@ export const useIndexedDatabase = ({
       // Execute callback.
       onSuccessCallback && onSuccessCallback(result);
     } catch (error) {
-      // debug({
-      //   title: "onSuccess",
-      //   flag: "catch",
-      //   debugLevel: "error",
-      //   description: (error as any).message,
-      // });
+      console.error((error as any).message);
     }
   };
 
@@ -211,20 +95,10 @@ export const useIndexedDatabase = ({
       const database = target.result as IDBDatabase;
       setDatabase(database);
 
-      // debug({
-      //   title: "onUpgradeNeeded",
-      //   parameters: { result: target.result, database },
-      // });
-
       // Execute callback.
       onUpgradeneededCallback && onUpgradeneededCallback(database);
     } catch (error) {
-      // debug({
-      //   title: "onUpgradeNeeded",
-      //   flag: "catch",
-      //   debugLevel: "error",
-      //   description: (error as any).message,
-      // });
+      console.error((error as any).message);
     }
   };
 
@@ -264,12 +138,7 @@ export const useIndexedDatabase = ({
         indexList: createdIndexList,
       };
     } catch (error) {
-      // debug({
-      //   title: "createObjectStore",
-      //   debugLevel: "error",
-      //   flag: "catch",
-      //   description: (error as any).message,
-      // });
+      console.error((error as any).message);
     }
   };
 
@@ -295,44 +164,51 @@ export const useIndexedDatabase = ({
   /**
    * Clear database store by store name.
    */
-  const clearObjectStoreByName = ({
+  const clearObjectStoreByName = async ({
     storeName,
     onSuccessCallback,
     onErrorCallback,
-  }: ClearObjectStoreByNameProps) => {
-    const store = retrieveObjectStore(storeName, "readwrite");
-    if (!store) return;
+  }: ClearObjectStoreByNameProps): Promise<ClearObjectStoreReturns> => {
+    try {
+      const store = retrieveObjectStore(storeName, "readwrite");
+      if (!store) return { ok: false, error: "The store does not found." };
 
-    const request = store.clear();
+      const promise = new Promise<ClearObjectStoreReturns>(
+        (resolve, reject) => {
+          const request = store.clear();
 
-    request.addEventListener(
-      "success",
-      (event: Event) => {
-        // debug({
-        //   title: "clearObjectStoreByName",
-        //   flag: "success",
-        //   parameters: { event },
-        // });
+          request.addEventListener(
+            "success",
+            (event: Event) => {
+              onSuccessCallback && onSuccessCallback(event);
 
-        onSuccessCallback && onSuccessCallback(event);
-      },
-      false
-    );
+              resolve({ ok: true });
+            },
 
-    request.addEventListener(
-      "error",
-      (event: Event) => {
-        // debug({
-        //   title: "clearObjectStoreByName",
-        //   flag: "error",
-        //   debugLevel: "warning",
-        //   parameters: { event },
-        // });
+            false
+          );
 
-        onErrorCallback && onErrorCallback(event);
-      },
-      false
-    );
+          request.addEventListener(
+            "error",
+            (event: Event) => {
+              onErrorCallback && onErrorCallback(event);
+
+              reject({ ok: false, error: "An error has occurred." });
+            },
+            false
+          );
+        }
+      );
+
+      return promise
+        .then((result) => result)
+        .catch((error: CoreOutput) => error);
+    } catch (error) {
+      return {
+        ok: false,
+        error: "Failed clear object store by name.",
+      };
+    }
   };
 
   /**
@@ -377,22 +253,11 @@ export const useIndexedDatabase = ({
           (event: Event) => {
             try {
               const { result } = event.target as IDBOpenDBRequest;
-              // debug({
-              //   title: "createRow",
-              //   flag: "success",
-              //   parameters: { result },
-              // });
 
               onSuccessCallback && onSuccessCallback(result);
 
               resolve({ ok: true, data: result });
             } catch (error) {
-              // debug({
-              //   title: "createRow",
-              //   flag: "success:catch",
-              //   description: (error as any).message,
-              // });
-
               reject({ ok: false, error: (error as any).message });
             }
           },
@@ -402,13 +267,6 @@ export const useIndexedDatabase = ({
         request.addEventListener(
           "error",
           (event: Event) => {
-            // debug({
-            //   title: "createRow",
-            //   flag: "error",
-            //   debugLevel: "warning",
-            //   parameters: { event },
-            // });
-
             onErrorCallback && onErrorCallback(event);
 
             reject({ ok: false, error: "Failed add into object store." });
@@ -421,12 +279,7 @@ export const useIndexedDatabase = ({
         .then((result) => result)
         .catch((error: CoreOutput) => error);
     } catch (error) {
-      // debug({
-      //   title: "createRow",
-      //   flag: "catch",
-      //   debugLevel: "error",
-      //   description: `${(error as any).message}`,
-      // });
+      console.error((error as any).message);
 
       return {
         ok: false,
@@ -458,11 +311,6 @@ export const useIndexedDatabase = ({
           (event: Event) => {
             try {
               const { result } = event.target as IDBOpenDBRequest;
-              // debug({
-              //   title: "retrieveRow",
-              //   flag: "success",
-              //   parameters: { result },
-              // });
 
               // Execute callback.
               onSuccessCallback && onSuccessCallback(result);
@@ -472,13 +320,7 @@ export const useIndexedDatabase = ({
                 data: result as T,
               });
             } catch (error) {
-              // debug({
-              //   title: "retrieveRow",
-              //   flag: "success:catch",
-              //   debugLevel: "warning",
-              //   description: (error as any).message,
-              //   parameters: { event },
-              // });
+              console.error((error as any).message);
 
               reject({
                 ok: false,
@@ -493,13 +335,6 @@ export const useIndexedDatabase = ({
         request.addEventListener(
           "error",
           (event: Event) => {
-            // debug({
-            //   title: "retrieveRow",
-            //   flag: "error",
-            //   debugLevel: "warning",
-            //   parameters: { event },
-            // });
-
             // Execute callback.
             onErrorCallback && onErrorCallback(event);
 
@@ -517,12 +352,7 @@ export const useIndexedDatabase = ({
         .then((result) => result)
         .catch((error: CoreOutput) => error);
     } catch (error) {
-      // debug({
-      //   title: "retrieveRow",
-      //   flag: "catch",
-      //   debugLevel: "error",
-      //   description: (error as any).message,
-      // });
+      console.error((error as any).message);
 
       return {
         ok: false,
@@ -557,11 +387,6 @@ export const useIndexedDatabase = ({
 
             updateRequest.addEventListener("success", (event: Event) => {
               const { result } = event.target as IDBOpenDBRequest;
-              // debug({
-              //   title: "updateRowById",
-              //   flag: "success",
-              //   parameters: { result },
-              // });
 
               onSuccessCallback?.(result);
 
@@ -569,13 +394,6 @@ export const useIndexedDatabase = ({
             });
 
             updateRequest.addEventListener("error", (event: Event) => {
-              // debug({
-              //   title: "updateRowById",
-              //   flag: "error",
-              //   debugLevel: "warning",
-              //   parameters: { event },
-              // });
-
               onErrorCallback?.(event);
 
               reject({
@@ -590,13 +408,6 @@ export const useIndexedDatabase = ({
         getRequest.addEventListener(
           "error",
           (event: Event) => {
-            // debug({
-            //   title: "updateRowById",
-            //   flag: "retrieve",
-            //   debugLevel: "warning",
-            //   parameters: { event },
-            // });
-
             onErrorCallback?.(event);
 
             reject({
@@ -613,12 +424,7 @@ export const useIndexedDatabase = ({
         .then<UpdateRowReturns>((result) => result)
         .catch((error: CoreOutput) => error);
     } catch (error) {
-      // debug({
-      //   title: "updateRowById",
-      //   flag: "catch",
-      //   debugLevel: "error",
-      //   description: (error as any).message,
-      // });
+      console.error((error as any).message);
 
       return {
         ok: false,
@@ -649,11 +455,6 @@ export const useIndexedDatabase = ({
           (event: Event) => {
             try {
               const { result } = event.target as IDBOpenDBRequest;
-              // debug({
-              //   title: "deleteRow",
-              //   flag: "success",
-              //   parameters: { result },
-              // });
 
               // Execute callback.
               onSuccessCallback && onSuccessCallback(result);
@@ -663,12 +464,6 @@ export const useIndexedDatabase = ({
                 data: result,
               });
             } catch (error) {
-              // debug({
-              //   title: "deleteRow",
-              //   flag: "success:catch",
-              //   description: (error as any).message,
-              // });
-
               reject({
                 ok: false,
                 error: (error as any).message,
@@ -681,13 +476,6 @@ export const useIndexedDatabase = ({
         request.addEventListener(
           "error",
           (event: Event) => {
-            // debug({
-            //   title: "deleteRow",
-            //   flag: "error",
-            //   debugLevel: "warning",
-            //   parameters: { event },
-            // });
-
             // Execute callback.
             onErrorCallback && onErrorCallback(event);
 
@@ -705,12 +493,7 @@ export const useIndexedDatabase = ({
         .then((result) => result)
         .catch((error: CoreOutput) => error);
     } catch (error) {
-      // debug({
-      //   title: "deleteRowById",
-      //   flag: "catch",
-      //   debugLevel: "error",
-      //   description: (error as any).message,
-      // });
+      console.error((error as any).message);
 
       return {
         ok: false,
@@ -759,12 +542,6 @@ export const useIndexedDatabase = ({
   }: OpenDatabaseProperties): OpenDatabaseReturns => {
     // This browser is not supported?
     if (!window.indexedDB) {
-      // debug({
-      //   title: "openDatabase",
-      //   debugLevel: "warning",
-      //   description: `Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available.`,
-      //   parameters: { name, version },
-      // });
       return {
         ok: false,
         error: `Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available.`,
@@ -812,23 +589,10 @@ export const useIndexedDatabase = ({
 
     // Has problem?
     if (!ok) {
-      return;
-      // return debug({
-      //   title: "initialize",
-      //   debugLevel: "warning",
-      //   flag: "ok",
-      //   description: error,
-      //   parameters: { name: databaseName, version: databaseVersion },
-      // });
+      return console.warn(error);
     }
 
-    // debug({
-    //   title: "initialize",
-    //   debugLevel: "info",
-    //   flag: "success",
-    //   description: "Database initialize success.",
-    //   parameters: { data },
-    // });
+    console.info("Database initialize success.");
   };
 
   initialize();
