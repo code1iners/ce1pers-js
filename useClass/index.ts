@@ -1,1 +1,1 @@
-export { clazz } from "./src/clazz";
+export { clazz } from "./src/class-helpers";
