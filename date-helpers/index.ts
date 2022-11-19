@@ -7,4 +7,6 @@ export {
   getTimeDifferenceAsHours,
   getTimeDifferenceAsMinutes,
   getTimeDifferenceAsSeconds,
-} from "./src/useDateTime";
+} from "./src/shared/utilities";
+
+export { makeCalendar } from "./src/calendar-helpers";
