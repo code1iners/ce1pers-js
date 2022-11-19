@@ -25,8 +25,8 @@ export const makeCalendar = (
 
   // Make previous month.
   const previousMonthLastDate = obtainLastDate(
-    now.getFullYear(),
-    now.getMonth()
+    year ? year : now.getFullYear(),
+    month ? month - 1 : now.getMonth()
   );
 
   const previousMonth = Array.from(
@@ -66,8 +66,8 @@ export const makeCalendar = (
 
   // Make next month.
   const nextMonthFirstDate = obtainFirstDate(
-    now.getFullYear(),
-    now.getMonth() + 2
+    year ? year : now.getFullYear(),
+    month ? month + 1 : now.getMonth() + 2
   );
 
   const nextMonth = Array.from({ length: nextMonthDateCount }, (_, i) => {

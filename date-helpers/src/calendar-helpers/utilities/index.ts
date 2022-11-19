@@ -93,6 +93,7 @@ export const obtainLastDay = (
   options?: ObtainLastDayOptions
 ) => {
   const now = obtainLastDate(year, month);
+  console.log(now);
   const dayIndex = now.getDay();
   const convertedDay = convertDay(dayIndex, options);
   return {
@@ -106,16 +107,17 @@ export const obtainLastDay = (
  * @param {number} month
  */
 export const computeMonthTotalDateCount = (year?: number, month?: number) => {
-  const MAX_DATE_COUNT = 35;
-  const ONE_WEEK_DATE_COUNT = 7;
+  const MAX_DATE_COUNT = 42;
   const firstDay = obtainFirstDay(year, month);
-  const lastDay = obtainLastDay(year, month);
+  const lastDate = obtainLastDate(year, month);
 
   const previousMonthDateCount = firstDay.dayIndex;
-  const nextMonthDateCount = ONE_WEEK_DATE_COUNT - (lastDay.dayIndex + 1);
+  const currentMonthDateCount = lastDate.getDate();
+  const nextMonthDateCount =
+    MAX_DATE_COUNT - (previousMonthDateCount + currentMonthDateCount);
+
   return {
-    currentMonthDateCount:
-      MAX_DATE_COUNT - previousMonthDateCount - nextMonthDateCount,
+    currentMonthDateCount,
     previousMonthDateCount,
     nextMonthDateCount,
   };
