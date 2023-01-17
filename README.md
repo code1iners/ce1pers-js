@@ -1,4 +1,4 @@
-# Ce1pers
+# Ce1pers (Helpers)
 
 Collection of react hook for Javascript side application or framework.
 
