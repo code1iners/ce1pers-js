@@ -12,8 +12,8 @@ import {
  * @param {number} month
  */
 export const makeCalendar = (
-  year?: number,
-  month?: number
+  year: number,
+  month: number
 ): CalendarDateItem[] => {
   const { currentMonthDateCount, previousMonthDateCount, nextMonthDateCount } =
     computeMonthTotalDateCount(year, month);
