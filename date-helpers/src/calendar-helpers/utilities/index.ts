@@ -47,20 +47,15 @@ export const convertDay = (
 /**
  * Obtain first date.
  */
-export const obtainFirstDate = (year?: number, month?: number) => {
-  const now = new Date();
-  now.setDate(1);
-  year && now.setFullYear(year);
-  month && now.setMonth(month - 1);
-  return now;
-};
+export const obtainFirstDate = (year: number, month: number) =>
+  new Date(year, month - 1, 1);
 
 /**
  * Obtain first day.
  */
 export const obtainFirstDay = (
-  year?: number,
-  month?: number,
+  year: number,
+  month: number,
   options?: ObtainFirstDayOptions
 ) => {
   const dayIndex = obtainFirstDate(year, month).getDay();
@@ -122,8 +117,9 @@ export const computeMonthTotalDateCount = (year: number, month: number) => {
  * Compute current month total calendar date count.
  */
 export const computeCurrentMonthTotalDateCount = () => {
-  const firstDay = obtainFirstDay();
-  const lastDay = obtainLastDay();
+  const now = new Date();
+  const firstDay = obtainFirstDay(now.getFullYear(), now.getMonth() + 1);
+  const lastDay = obtainLastDay(now.getFullYear(), now.getMonth() + 1);
 
   const previousMonthDateCount = firstDay.dayIndex;
   const nextMonthDateCount = 7 - (lastDay.dayIndex + 1);
