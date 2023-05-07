@@ -1,3 +1,4 @@
+export { GetPassedTimeOutputs, WithFormatInput } from "./src/shared/types";
 export {
   convertDateToEight,
   convertEightToDate,
@@ -7,6 +8,10 @@ export {
   getTimeDifferenceAsHours,
   getTimeDifferenceAsMinutes,
   getTimeDifferenceAsSeconds,
+  withFormat,
+  getFirstDateOfCurrentMonth,
+  getFirstDateOfMonth,
+  getLastDateOfCurrentMonth,
+  getLastDateOfMonth,
 } from "./src/shared/utilities";
-
 export { makeCalendar } from "./src/calendar-helpers";

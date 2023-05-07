@@ -1,4 +1,5 @@
-import { GetPassedTimeOutputs } from "./types";
+import moment from "moment";
+import { GetPassedTimeOutputs, WithFormatInput } from "./types";
 
 /**
  * ### Getting time difference.
@@ -95,3 +96,38 @@ export const convertDateToEight = (dateParam: Date, divider?: string) => {
     return null;
   }
 };
+
+/**
+ * ### Convert date format.
+ */
+export const withFormat = (input?: WithFormatInput) => {
+  if (!input) return moment().format("YYYY-MM-DD");
+  const { date, format } = input;
+  return moment(date ?? new Date()).format(format);
+};
+
+/**
+ * ### Obtains first date of month from date or now.
+ */
+export const getFirstDateOfMonth = (month: number) =>
+  moment()
+    .month(month - 1)
+    .startOf("month");
+
+/**
+ * ### Obtains first date of current month.
+ */
+export const getFirstDateOfCurrentMonth = () => moment().startOf("month");
+
+/**
+ * ### Obtains last date of month from date or now.
+ */
+export const getLastDateOfMonth = (month: number) =>
+  moment()
+    .month(month - 1)
+    .endOf("month");
+
+/**
+ * ### Obtains last date of current month.
+ */
+export const getLastDateOfCurrentMonth = () => moment().endOf("month");
