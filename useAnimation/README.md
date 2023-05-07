@@ -55,12 +55,13 @@ function App() {
         dotColor: "rgb(26, 188, 156)",
       })
     );
+
     return () => {
-      document.addEventListener("click", (e: MouseEvent) =>
+      document.removeEventListener("click", (e: MouseEvent) =>
         makeRotateEffect({ x: e.clientX, y: e.clientY })
       );
     };
-  });
+  }, []);
 
   return <div className="App">Hello Use Animation</div>;
 }

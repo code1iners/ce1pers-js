@@ -47,20 +47,15 @@ export const convertDay = (
 /**
  * Obtain first date.
  */
-export const obtainFirstDate = (year?: number, month?: number) => {
-  const now = new Date();
-  now.setDate(1);
-  year && now.setFullYear(year);
-  month && now.setMonth(month - 1);
-  return now;
-};
+export const obtainFirstDate = (year: number, month: number) =>
+  new Date(year, month - 1, 1);
 
 /**
  * Obtain first day.
  */
 export const obtainFirstDay = (
-  year?: number,
-  month?: number,
+  year: number,
+  month: number,
   options?: ObtainFirstDayOptions
 ) => {
   const dayIndex = obtainFirstDate(year, month).getDay();
@@ -73,16 +68,9 @@ export const obtainFirstDay = (
 
 /**
  * Obtain last date information.
- * @param {number} year
- * @param {number} month
  */
-export const obtainLastDate = (year?: number, month?: number) => {
-  const now = new Date();
-  year && now.setFullYear(year);
-  month ? now.setMonth(month) : now.setMonth(now.getMonth() + 1);
-  now.setDate(0);
-  return now;
-};
+export const obtainLastDate = (year: number, month: number) =>
+  new Date(year, month, 0);
 
 /**
  * Obtain last day information.
@@ -92,9 +80,11 @@ export const obtainLastDay = (
   month?: number,
   options?: ObtainLastDayOptions
 ) => {
-  const now = obtainLastDate(year, month);
-  console.log(now);
-  const dayIndex = now.getDay();
+  const now = new Date();
+  const yearInput = year ?? now.getFullYear();
+  const monthInput = month ?? now.getMonth() + 1;
+  const obtainedDate = obtainLastDate(yearInput, monthInput);
+  const dayIndex = obtainedDate.getDay();
   const convertedDay = convertDay(dayIndex, options);
   return {
     dayIndex,
@@ -106,7 +96,7 @@ export const obtainLastDay = (
  * Compute total calendar date count by month.
  * @param {number} month
  */
-export const computeMonthTotalDateCount = (year?: number, month?: number) => {
+export const computeMonthTotalDateCount = (year: number, month: number) => {
   const MAX_DATE_COUNT = 42;
   const firstDay = obtainFirstDay(year, month);
   const lastDate = obtainLastDate(year, month);
@@ -127,8 +117,9 @@ export const computeMonthTotalDateCount = (year?: number, month?: number) => {
  * Compute current month total calendar date count.
  */
 export const computeCurrentMonthTotalDateCount = () => {
-  const firstDay = obtainFirstDay();
-  const lastDay = obtainLastDay();
+  const now = new Date();
+  const firstDay = obtainFirstDay(now.getFullYear(), now.getMonth() + 1);
+  const lastDay = obtainLastDay(now.getFullYear(), now.getMonth() + 1);
 
   const previousMonthDateCount = firstDay.dayIndex;
   const nextMonthDateCount = 7 - (lastDay.dayIndex + 1);
