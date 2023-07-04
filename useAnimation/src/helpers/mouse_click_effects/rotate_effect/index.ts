@@ -40,6 +40,7 @@ function createDotContainer({ x, y, degree, size }: CreateDotContainerProps) {
   container.style.transform = `rotate(${degree}deg)`;
   container.style.position = `absolute`;
   container.style.zIndex = "666";
+  container.style.pointerEvents = "none";
   return container;
 }
 
@@ -53,6 +54,7 @@ function createDotWrapper({ size, parent }: CreateDotWrapperProps) {
   wrapper.style.display = "flex";
   wrapper.style.justifyContent = "center";
   wrapper.style.alignItems = "center";
+  wrapper.style.pointerEvents = "none";
   wrapper.classList.add("animate-rotate-r");
   parent.appendChild(wrapper);
   return wrapper;
@@ -70,6 +72,7 @@ function createDot({ parent, dotColor = "red" }: CreateDotProps) {
     "color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter";
   dot.style.transitionTimingFunction = "cubic-bezier(0.4, 0, 0.2, 1)";
   dot.style.transitionDuration = "150ms";
+  dot.style.pointerEvents = "none";
   dot.classList.add("animate-straight-r");
   parent.appendChild(dot);
   return dot;

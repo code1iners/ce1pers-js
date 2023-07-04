@@ -1,6 +1,6 @@
 {
   "name": "@ce1pers/use-animation",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Collection of various useful animation helper functions.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
