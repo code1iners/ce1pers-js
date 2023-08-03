@@ -13,7 +13,7 @@
  */
 
 export interface ObjectArraySorterInput<T> {
-  array: any[];
+  array: T[];
   sortBy: keyof T;
   sortByType:
     | "string"
