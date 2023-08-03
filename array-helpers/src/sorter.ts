@@ -1,11 +1,7 @@
-// @ts-check
+import { ObjectArraySorterInput } from "./types";
 
 /**
  * Sorts an object array based on the provided 'sortBy' and 'sortByType'.
- *
- * @param {ObjectArraySorterInput} input
- *
- * @returns {Array} - Sorted array.
  *
  * @throws {Error} Throws an type error if the 'array' argument type is not array.
  * @throws {Error} Throws an type error if the 'sortByType' is not supported.
@@ -15,7 +11,7 @@ export const objectArraySorter = ({
   sortBy,
   sortByType,
   reversed = false,
-}) => {
+}: ObjectArraySorterInput) => {
   try {
     if (!Array.isArray(array))
       throw new TypeError(`'array' argument must be array type.`);
@@ -31,7 +27,7 @@ export const objectArraySorter = ({
       // Has key?
       switch (sortByType) {
         case "string":
-          cloned.sort((a, b) => {
+          cloned.sort((a: any, b: any) => {
             const aKey = a[sortBy].toUpperCase();
             const bKey = b[sortBy].toUpperCase();
             return aKey.localeCompare(bKey);
@@ -39,7 +35,7 @@ export const objectArraySorter = ({
           break;
 
         case "number":
-          cloned.sort((a, b) => a[sortBy] - b[sortBy]);
+          cloned.sort((a: any, b: any) => a[sortBy] - b[sortBy]);
           break;
 
         default:
@@ -51,8 +47,8 @@ export const objectArraySorter = ({
     if (reversed) cloned.reverse();
 
     return cloned;
-  } catch (error) {
-    console.warn(error.message);
+  } catch (err) {
+    console.warn((err as Error).message);
     return array;
   }
 };

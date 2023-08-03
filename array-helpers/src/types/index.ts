@@ -11,3 +11,23 @@
  * @property {Array<Array>} arrays
  * @property {string} mergeBy
  */
+
+export interface ObjectArraySorterInput {
+  array: any[];
+  sortBy: string;
+  sortByType:
+    | "string"
+    | "number"
+    | "bigint"
+    | "boolean"
+    | "symbol"
+    | "undefined"
+    | "object"
+    | "function";
+  reversed?: boolean;
+}
+
+export interface ObjectArrayMergerInput {
+  arrays: Array<any>;
+  mergeBy: string;
+}

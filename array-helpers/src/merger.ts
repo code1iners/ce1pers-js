@@ -1,16 +1,15 @@
-// @ts-check
+import { ObjectArrayMergerInput } from "./types";
 
 /**
  * Merges object arrays into one array using the provided 'mergeBy'
  *
- * @param {ObjectArrayMergerInput} input
- *
- * @returns {Array} - The merged array.
- *
  * @throws {Error} - Throws an error if the length of the arrays are not equal.
  * @throws {Error} - Throws an error if the provided merge key does not exist.
  */
-export const objectArrayMerger = ({ arrays, mergeBy }) => {
+export const objectArrayMerger = ({
+  arrays,
+  mergeBy,
+}: ObjectArrayMergerInput) => {
   try {
     // Does not same array length.
     const referenceLength = arrays.at(0).length;
@@ -21,7 +20,7 @@ export const objectArrayMerger = ({ arrays, mergeBy }) => {
 
     // Have a mergeBy into each array?
     const hasMergeKey = arrays.every((array) =>
-      array.every((item) => mergeBy in item)
+      array.every((item: any) => mergeBy in item)
     );
     if (!hasMergeKey)
       throw new Error(`Merge key '${mergeBy}' does not exist in all arrays.`);
@@ -42,7 +41,7 @@ export const objectArrayMerger = ({ arrays, mergeBy }) => {
 
     return result;
   } catch (err) {
-    console.warn(err.message);
+    console.warn((err as Error).message);
     return [];
   }
 };

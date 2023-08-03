@@ -28,6 +28,6 @@ Collection of react hook for Javascript side application or framework.
 |date-helpers|Date or time helpers.|[date-helpers](https://github.com/code1iners/ce1pers/tree/main/date-helpers)|[@ce1pers/date-helpers](https://www.npmjs.com/package/@ce1pers/date-helpers)| Typescript |
 |random-helpers|Simple random helpers|[random-helpers](https://github.com/code1iners/ce1pers/tree/main/random-helpers)|[@ce1pers/random-helpers](https://www.npmjs.com/package/@ce1pers/random-helpers)| Typescript |
 |naming-convention-helpers|Naming convention convert helper|[naming-convention-helpers](https://github.com/code1iners/ce1pers/tree/main/naming-convention-helpers)|[@ce1pers/naming-convention-helpers](https://www.npmjs.com/package/@ce1pers/naming-convention-helpers)| Typescript |
-|array-helpers|Included simple array helpers|[array-helpers](https://github.com/code1iners/ce1pers/tree/main/array-helpers)|[@ce1pers/array-helpers](https://www.npmjs.com/package/@ce1pers/array-helpers)| JavaScript |
+|array-helpers|Included simple array helpers|[array-helpers](https://github.com/code1iners/ce1pers/tree/main/array-helpers)|[@ce1pers/array-helpers](https://www.npmjs.com/package/@ce1pers/array-helpers)| TypeScript |
 
 

@@ -1,11 +1,13 @@
 {
   "name": "@ce1pers/array-helpers",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Included simple array helpers.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev:distincter": "nodemon ./src/distincter.js",
-    "deploy": "npm publish --access public"
+    "build": "rm -rf dist && tsc",
+    "deploy": "npm run build && npm publish --access public"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,8 @@
     "url": "https://github.com/code1iners/celpers-js/issues"
   },
   "homepage": "https://github.com/code1iners/celpers-js#readme",
-  "dependencies": {
-    "nodemon": "^3.0.1"
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1"
   }
 }
