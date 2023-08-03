@@ -12,9 +12,9 @@
  * @property {string} mergeBy
  */
 
-export interface ObjectArraySorterInput {
+export interface ObjectArraySorterInput<T> {
   array: any[];
-  sortBy: string;
+  sortBy: keyof T;
   sortByType:
     | "string"
     | "number"

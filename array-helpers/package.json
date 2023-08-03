@@ -1,6 +1,6 @@
 {
   "name": "@ce1pers/array-helpers",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Included simple array helpers.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
