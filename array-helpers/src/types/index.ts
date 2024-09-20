@@ -31,3 +31,28 @@ export interface ObjectArrayMergerInput {
   arrays: Array<any>;
   mergeBy: string;
 }
+
+export type KeyValueType<T = string> = {
+  key: T;
+  value: string | number;
+};
+
+export type DeleteItemKindType = "id" | "index";
+
+export type DeleteItemByIdExtraOptionsType<T> = {
+  key: keyof T;
+  value: string | number;
+  once?: boolean;
+};
+
+export type DeleteItemByIdOptionsType<T extends object> = {
+  kind: "id";
+} & DeleteItemByIdExtraOptionsType<T>;
+
+export type DeleteItemByIndexOptionsType = {
+  kind: "index";
+};
+
+export type DeleteItemOptions<T extends object> =
+  | DeleteItemByIdOptionsType<T>
+  | DeleteItemByIndexOptionsType;
