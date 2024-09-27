@@ -32,9 +32,8 @@ export const deleteById = <T extends object>(
 /**
  * Delete item from array by index.
  */
-export const deleteByIndex = <T>(array: readonly T[], index: number) => {
-  return array.filter((_, __index__) => __index__ !== index);
-};
+export const deleteByIndex = <T>(array: readonly T[], index: number) =>
+  array.filter((_, __index__) => __index__ !== index);
 
 /**
  * Delete item from array.
@@ -43,12 +42,12 @@ export const deleteItem = <T extends object>(
   array: readonly T[],
   options: DeleteItemOptions<T>,
 ) => {
-  switch (options?.kind) {
+  switch (options?.by) {
     case "id":
       return deleteById(array, options);
 
-    // case "index":
-    //   return deleteByIndex(array, options.index);
+    case "index":
+      return deleteByIndex(array, options.index);
   }
 };
 

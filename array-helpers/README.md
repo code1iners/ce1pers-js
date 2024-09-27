@@ -10,31 +10,73 @@ Included simple array helpers.
 
 ## Usage
 
+### Sorter example.
 ```javascript
-// Import Library.
-import { objectArraySorter, objectArrayMerger, distincter } from "@ce1pers/array-helpers";
+import { objectArraySorter } from "@ce1pers/array-helpers";
 
-// Object array sorter example.
 const sorterResult = objectArraySorter({
   array: [
-    { id: 1, name: 'user1' },
-    { id: 3, name: 'user3' },
-    { id: 2, name: 'user2' },
+    { id: 1, name: "user1" },
+    { id: 3, name: "user3" },
+    { id: 2, name: "user2" },
   ],
-  sortBy: 'id',
-  sortByType: 'number',
+  sortBy: "id",
+  sortByType: "number",
 });
 console.log(sorterResult); // [{ id: 1, name: 'user1' }, { id: 2, name: 'user2' }, { id: 3, name: 'user3' }]
+```
 
-// Object array merger example.
+### Merger example.
+
+```javascript
+import { objectArrayMerger, distincter } from "@ce1pers/array-helpers";
+
 const mergerResult = objectArrayMerger({
-  arrays: [[{ id: 1, name: 'user1' }], [{ id: 2, name: 'user2' }], [{ id: 3, name: 'user3' }]],
-  mergeBy: 'name',
+  arrays: [
+    [{ id: 1, name: "user1" }],
+    [{ id: 2, name: "user2" }],
+    [{ id: 3, name: "user3" }],
+  ],
+  mergeBy: "name",
 });
 console.log(mergerResult); // [['user1', 'user2', 'user3']]
 
 // Distincter example.
-const distincterResult = distincter([1, 1, 2, 3, 4, '5', '5']);
+const distincterResult = distincter([1, 1, 2, 3, 4, "5", "5"]);
 console.log(distincterResult); // [1, 2, 3, 4, '5']
+```
 
+### Deleter example.
+
+```javascript
+import { deleteItem } from "@ce1pers/array-helpers";
+
+const array = [
+  { id: 0, name: "Emilie" },
+  { id: 1, name: "Benjamin" },
+  { id: 2, name: "Gary" },
+  { id: 3, name: "Herman" },
+  { id: 4, name: "Emilie" },
+] as const;
+
+const result1 = deleteItem(array, {
+  by: "id",
+  key: "name",
+  value: "Emilie",
+});
+console.log(result1); // [ { id: 1, name: 'Benjamin' }, { id: 2, name: 'Gary' }, { id: 3, name: 'Herman' } ]
+
+const result2 = deleteItem(array, {
+  by: "id",
+  key: "name",
+  value: "Emilie",
+  once: true,
+});
+console.log(result2); // [ { id: 1, name: 'Benjamin' }, { id: 2, name: 'Gary' }, { id: 3, name: 'Herman' }, { id: 4, name: 'Emilie' } ]
+
+const result3 = deleteItem(array, {
+  by: "index",
+  index: 4,
+});
+console.log(result3); // [ { id: 0, name: 'Emilie' }, { id: 1, name: 'Benjamin' }, { id: 2, name: 'Gary' }, { id: 3, name: 'Herman' } ]
 ```

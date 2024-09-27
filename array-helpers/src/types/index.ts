@@ -45,13 +45,17 @@ export type DeleteItemByIdExtraOptionsType<T> = {
   once?: boolean;
 };
 
+export type DeleteItemByIndexExtraOptionsType = {
+  index: number;
+};
+
 export type DeleteItemByIdOptionsType<T extends object> = {
-  kind: "id";
+  by: "id";
 } & DeleteItemByIdExtraOptionsType<T>;
 
 export type DeleteItemByIndexOptionsType = {
-  kind: "index";
-};
+  by: "index";
+} & DeleteItemByIndexExtraOptionsType;
 
 export type DeleteItemOptions<T extends object> =
   | DeleteItemByIdOptionsType<T>
