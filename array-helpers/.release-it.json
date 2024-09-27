@@ -1,0 +1,17 @@
+{
+  "git": {
+    "push": false
+  },
+  "hooks": {
+    "before:init": "echo 'Starting release...'",
+    "after:bump": ["npm install", "npm run build"],
+    "after:release": "echo 'Successfully release!'"
+  },
+  "github": {
+    "release": true,
+    "tokenRef": "GITHUB_TOKEN"
+  },
+  "npm": {
+    "publish": true
+  }
+}

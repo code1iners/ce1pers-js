@@ -8,6 +8,7 @@
     "dev": "nodemon ./index.ts --watch",
     "dev:distincter": "nodemon ./src/distincter.js",
     "build": "rm -rf dist && tsc",
+    "release": "release-it",
     "deploy": "npm run build && npm publish --access public"
   },
   "repository": {
@@ -27,6 +28,7 @@
   "homepage": "https://github.com/code1iners/celpers-js#readme",
   "devDependencies": {
     "nodemon": "^3.0.1",
+    "release-it": "^17.6.0",
     "ts-node": "^10.9.1"
   }
 }
